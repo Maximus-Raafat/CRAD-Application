@@ -1,0 +1,28 @@
+{
+  "taskList": [
+    {
+      "id": "1",
+      "userId": 1,
+      "title": "Submit project proposal",
+      "description": "Prepare and submit the proposal for the new project.",
+      "status": "Completed",
+      "deadline": "new Date(2024-12-20)"
+    },
+    {
+      "id": "2",
+      "userId": 2,
+      "title": "Team meeting",
+      "description": "Discuss project updates with the team.",
+      "status": "Pending",
+      "deadline": "new Date(2024-12-18)"
+    },
+    {
+      "id": "3",
+      "userId": 3,
+      "title": "Code review",
+      "description": "Review the code for the latest feature implementation.",
+      "status": "Completed",
+      "deadline": "new Date(2024-12-19)"
+    }
+  ]
+}
