@@ -1,5 +1,10 @@
 <div class="container">
-        <p-card header="Simple Card">
+    <p-card header="Simple Card">
+        <app-task-form
+         [taskData]="selectTask"
+         [visibleEditTask]="visibleEditTask"
+         (visibilityChange)="onVisibilityChange($event)">
+        </app-task-form>
             <p-select 
              [options]="status" 
              [(ngModel)]="selectedStatus" 
@@ -10,12 +15,14 @@
              />
 
             <ul>
-                <li *ngFor="let item of filteredItems">
-                    <p-checkbox (click)="toggleTaskStutus(item)" [binary]="true" class="mx-2" />
-                    <p [ngStyle]="{'text-decoration-line': item.status === 'Completed' ? 'line-through' : 'none'}">
-                        {{ item.title }} - {{ item.status }}
+                <li *ngFor="let item of filteredItems" class="d-flex">
+                    <p-checkbox (click)="toggleTaskStutus(item)" [binary]="true" [ngModel]="item.status === 'Completed'" class="mx-2" />
+                     
+                    <p (click)="onEdit(item)" class="selectEditTask" [ngStyle]="{'text-decoration-line': item.status === 'Completed' ? 'line-through' : 'none'}">
+                        {{ item.title }} - ( {{ item.status }} )
                       </p>
                     <hr />
+                
                 </li>
             </ul>
             

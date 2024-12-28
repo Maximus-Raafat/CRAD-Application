@@ -1,1 +1,99 @@
-<p>task-form works!</p>
+<div class="card flex justify-center">
+    
+    <div class="d-flex gap-5">
+        <p-button (click)="showDialog()" label="Add Task" />
+        <!-- <p-button (click)="visibleEditTask = true" label="Edit Task" /> -->
+    
+    </div>
+    <p-dialog header="Add Profile" [modal]="true" [(visible)]="visibleTask" [style]="{ width: '35rem'}">
+        <form [formGroup]="formGroupAddTask" (ngSubmit)="onSubmitAdd()">
+            <div>
+                <label for="title">Title:</label>
+                <input id="title" formControlName="title">
+                <div *ngIf="formGroupAddTask.get('title')?.invalid && formGroupAddTask.get('title')?.touched">
+                    Title is required.
+                </div>
+            </div>
+    
+            <div>
+                <label for="description">Description:</label>
+                <input id="description" formControlName="description">
+                <div *ngIf="formGroupAddTask.get('description')?.invalid && formGroupAddTask.get('description')?.touched">
+                    A valid description is required.
+                </div>
+            </div>
+    
+            <div>
+                <label for="status">Status:</label>
+                <p-select 
+                [options]="status"
+                formControlName="status"
+                optionLabel="name" 
+                placeholder="Select a Status" 
+                class="w-full md:w-56 my-4" 
+                />                <div *ngIf="formGroupAddTask.get('status')?.invalid && formGroupAddTask.get('status')?.touched">
+                    Status is required.
+                </div>
+            </div>
+
+            <div>
+                <label for="dealine">dealine:</label>
+                <p-datepicker formControlName="deadline" />
+                <div *ngIf="formGroupAddTask.get('deadline')?.invalid && formGroupAddTask.get('deadline')?.touched">
+                    deadline is required.
+                </div>
+            </div>
+            <div class="flex justify-end gap-4">
+                <p-button label="Cancel" severity="secondary" (click)="visibleTask = false"></p-button>
+                <p-button label="Submit" type="submit" [disabled]="formGroupAddTask.invalid" ></p-button>
+            </div>
+        </form>
+    </p-dialog>
+    
+
+
+    <p-dialog header="Edit Profile" [modal]="true" [(visible)]="visibleEditTask" [style]="{ width: '35rem'}">
+        <form [formGroup]="formGroupEditTask" >
+            <div>
+                <label for="title">Title:</label>
+                <input id="title" formControlName="title">
+                <div *ngIf="formGroupEditTask.get('title')?.invalid && formGroupEditTask.get('title')?.touched">
+                    Title is required.
+                </div>
+            </div>
+    
+            <div>
+                <label for="description">Description:</label>
+                <input id="description" formControlName="description">
+                <div *ngIf="formGroupEditTask.get('description')?.invalid && formGroupEditTask.get('description')?.touched">
+                    A valid description is required.
+                </div>
+            </div>
+    
+            <div>
+                <label for="status">status:</label>
+                <p-select 
+                [options]="status"
+                formControlName="status"
+                optionLabel="name" 
+                placeholder="Select a status" 
+                class="w-full md:w-56 my-4" 
+                />                <div *ngIf="formGroupEditTask.get('status')?.invalid && formGroupEditTask.get('status')?.touched">
+                    Status is required.
+                </div>
+            </div>
+
+            <div>
+                <label for="dealine">dealine:</label>
+                <p-datepicker formControlName="deadline" />
+                <div *ngIf="formGroupEditTask.get('deadline')?.invalid && formGroupEditTask.get('deadline')?.touched">
+                    deadline is required.
+                </div>
+            </div>
+            <div class="flex justify-end gap-4">
+                <p-button label="Cancel" severity="secondary" (click)="handleVisibility()"></p-button>
+                <p-button label="Submit" type="submit" (onClick)="onSubmitEdit()" [disabled]="formGroupEditTask.invalid" ></p-button>
+            </div>
+        </form>
+    </p-dialog>
+</div>

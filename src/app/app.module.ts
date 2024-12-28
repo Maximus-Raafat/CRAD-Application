@@ -8,7 +8,7 @@ import { TaskDetailsComponent } from './Management-Application/Features/Task/tas
 import { TaskFormComponent } from './Management-Application/Features/Task/task-form/task-form.component';
 import { TaskListComponent } from './Management-Application/Features/Task/task-list/task-list.component';
 import {  HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeng/themes/aura';
@@ -16,6 +16,9 @@ import { Card } from 'primeng/card';
 import { Select } from 'primeng/select';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Checkbox } from 'primeng/checkbox';
+import { Dialog } from 'primeng/dialog';
+import { DatePicker } from 'primeng/datepicker';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +30,7 @@ import { Checkbox } from 'primeng/checkbox';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     SharedModule,
@@ -34,7 +38,9 @@ import { Checkbox } from 'primeng/checkbox';
     ButtonModule,
     Card,
     Select,
-    Checkbox
+    Checkbox,
+    Dialog,
+    DatePicker,
   ],
   providers: [
     providePrimeNG({ 
