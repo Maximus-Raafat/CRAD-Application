@@ -45,10 +45,15 @@ export class TaskServiceService extends AbstractTaskService{
   
     this.tasksSubject.next(updatedTasks);
   
-    return this.http.patch(`${this.url}/${taskId}`, updatedTask)
+    return this.http.patch(`${this.url}/${taskId}`, updatedTask);
   }
-  override deleteTask(): Observable<void> {
-    throw new Error('Method not implemented.');
+  override deleteTask(taskId:any): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${taskId}`).pipe(
+      tap(()=>{
+        const updatedTask = this.tasksSubject.getValue().filter(task=>task.id !== taskId);
+        this.tasksSubject.next(updatedTask);
+      })
+    )
   }
 
 }

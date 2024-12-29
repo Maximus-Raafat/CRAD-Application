@@ -15,20 +15,6 @@
       "deadline": "2024-12-18"
     },
     {
-      "id": "3",
-      "title": "Code reviewr",
-      "description": "Review the code for the latest feature implementation.",
-      "status": "Pending",
-      "deadline": "2024-12-19"
-    },
-    {
-      "id": "4",
-      "title": "test na",
-      "description": "hello test",
-      "status": "Pending",
-      "deadline": "2024-12-28"
-    },
-    {
       "id": "5",
       "title": "pray r",
       "description": "pray for god will helping you ",
@@ -50,13 +36,6 @@
       "deadline": "2024-12-24"
     },
     {
-      "id": "8",
-      "title": "t",
-      "description": "t",
-      "status": "Pending",
-      "deadline": "2024-12-23"
-    },
-    {
       "id": "9",
       "title": "test num",
       "description": "hello test",
@@ -64,32 +43,11 @@
       "deadline": "2024-12-25"
     },
     {
-      "id": "10",
-      "title": "test",
-      "description": "hello test",
-      "status": "Pending",
-      "deadline": "2024-12-27"
-    },
-    {
       "id": "11",
       "title": "testt",
       "description": "hello test",
       "status": "Completed",
       "deadline": "2024-12-30"
-    },
-    {
-      "id": "12",
-      "title": "test 222",
-      "description": "hello test 222",
-      "status": "Pending",
-      "deadline": "2024-12-30"
-    },
-    {
-      "id": "13",
-      "title": "eeeee",
-      "description": "e",
-      "status": "Completed",
-      "deadline": "2024-12-27"
     }
   ]
 }

@@ -3,7 +3,9 @@
         <app-task-form
          [taskData]="selectTask"
          [visibleEditTask]="visibleEditTask"
-         (visibilityChange)="onVisibilityChange($event)">
+         (visibilityChange)="onVisibilityChange($event)"
+         [deleteTask]="deleteTask"
+         >
         </app-task-form>
             <p-select 
              [options]="status" 
@@ -22,7 +24,7 @@
                         {{ item.title }} - ( {{ item.status }} )
                       </p>
                     <hr />
-                
+                    <p-button (click)="deleteTaskfun(item)" class="mx-5" label="Delete" severity="warn"></p-button>
                 </li>
             </ul>
             

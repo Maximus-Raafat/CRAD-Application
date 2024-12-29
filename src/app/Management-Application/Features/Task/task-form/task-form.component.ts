@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TaskServiceService } from '../../../Core/Services/Task/task-service.service';
+import { listUserInterface } from '../../../Core/InterFaces/InterFaceForLits';
 
 @Component({
   selector: 'app-task-form',
@@ -16,6 +17,7 @@ export class TaskFormComponent implements OnInit , OnChanges {
   @Output() visibilityChange = new EventEmitter<boolean>()
   @Input() visibleEditTask: boolean = false;
   @Input() taskData : any;
+  @Input() deleteTask!: listUserInterface;
   constructor(private taskService:TaskServiceService){}
   ngOnInit(): void {
     this.difineFormAddTask();
@@ -27,8 +29,11 @@ export class TaskFormComponent implements OnInit , OnChanges {
   }
   
   ngOnChanges(changes: SimpleChanges): void {
+    if( changes['deleteTask'] && changes['deleteTask'].currentValue){
+      console.log("deleteTask = > ",this.deleteTask)
+      this. deleteTaskList();
+    }
     if (changes['taskData'] && changes['taskData'].currentValue) {
-      // console.log(this.taskData)
       this.difineFormEditTask();
     } else if (!this.taskData) {
       this.formGroupEditTask = new FormGroup({
@@ -37,7 +42,7 @@ export class TaskFormComponent implements OnInit , OnChanges {
         status: new FormControl(''),
         deadline: new FormControl(''),
       });
-    }
+    } 
   }
 
   difineFormAddTask() : void {
@@ -81,6 +86,7 @@ export class TaskFormComponent implements OnInit , OnChanges {
   showDialog() {
       this.visibleTask = true;
   }
+
   formateStatusDeadlibe(formTask:any) {
     const formValue = formTask.value;
     if (formValue.deadline instanceof Date) {
@@ -95,5 +101,8 @@ export class TaskFormComponent implements OnInit , OnChanges {
     this.visibleTask  = false;
     this.visibleEditTask  = false;
     return formValue;
+  }
+  deleteTaskList() : void {
+    this.taskService.deleteTask(this.deleteTask.id).subscribe();
   }
 }

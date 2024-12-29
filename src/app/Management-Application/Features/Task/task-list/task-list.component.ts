@@ -17,7 +17,7 @@ export class TaskListComponent implements OnInit{
   selectedStatus:Status | undefined;
   selectTask!:listUserInterface[];
   visibleEditTask = false;
-  
+  deleteTask!:listUserInterface;
   constructor(private taskService:TaskServiceService){
    
   }
@@ -60,5 +60,8 @@ export class TaskListComponent implements OnInit{
   }
   onVisibilityChange(visibility: boolean): void {
     this.visibleEditTask = visibility;
+  }
+  deleteTaskfun(item:any):void {
+   this.deleteTask = item;
   }
 }

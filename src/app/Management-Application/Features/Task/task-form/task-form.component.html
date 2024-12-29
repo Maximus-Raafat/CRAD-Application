@@ -2,8 +2,6 @@
     
     <div class="d-flex gap-5">
         <p-button (click)="showDialog()" label="Add Task" />
-        <!-- <p-button (click)="visibleEditTask = true" label="Edit Task" /> -->
-    
     </div>
     <p-dialog header="Add Profile" [modal]="true" [(visible)]="visibleTask" [style]="{ width: '35rem'}">
         <form [formGroup]="formGroupAddTask" (ngSubmit)="onSubmitAdd()">
@@ -96,4 +94,6 @@
             </div>
         </form>
     </p-dialog>
+
+    
 </div>
