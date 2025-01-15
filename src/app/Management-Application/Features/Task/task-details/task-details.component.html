@@ -1,1 +1,9 @@
-<p>task-details works!</p>
+<div class="task-details-container p-4 border rounded-md shadow-md bg-white">
+    <h2 class="text-2xl font-bold">{{ task?.title }}</h2>
+    <p><strong>Description:</strong> {{ task?.description }}</p>
+    <p><strong>Status:</strong> {{ task?.status }}</p>
+    <p><strong>Deadline:</strong> {{ task?.deadline | date: 'mediumDate' }}</p>
+    <p><strong>Assigned User:</strong> {{ task?.userId || 'Unassigned' }}</p>
+    <button (click)="closeDetails()" class="btn btn-primary mt-4">Close</button>
+  </div>
+  

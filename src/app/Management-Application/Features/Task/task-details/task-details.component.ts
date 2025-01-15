@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-task-details',
@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrl: './task-details.component.css'
 })
 export class TaskDetailsComponent {
+  @Input() task: any; 
+  @Output() closeDetailsEvent = new EventEmitter<void>();
 
+
+  closeDetails(): void {
+    this.closeDetailsEvent.emit();
+  }
 }

@@ -1,32 +1,61 @@
 <div class="container">
     <p-card header="Simple Card">
-        <app-task-form
-         [taskData]="selectTask"
-         [visibleEditTask]="visibleEditTask"
-         (visibilityChange)="onVisibilityChange($event)"
-         [deleteTask]="deleteTask"
-         >
-        </app-task-form>
-            <p-select 
-             [options]="status" 
-             [(ngModel)]="selectedStatus" 
-             optionLabel="name" 
-             placeholder="Select a Status" 
-             class="w-full md:w-56 my-4" 
-             (onChange)="selectedStatus ? filterTask(selectedStatus.code) : null"
-             />
-
-            <ul>
-                <li *ngFor="let item of filteredItems" class="d-flex">
-                    <p-checkbox (click)="toggleTaskStutus(item)" [binary]="true" [ngModel]="item.status === 'Completed'" class="mx-2" />
-                     
-                    <p (click)="onEdit(item)" class="selectEditTask" [ngStyle]="{'text-decoration-line': item.status === 'Completed' ? 'line-through' : 'none'}">
-                        {{ item.title }} - ( {{ item.status }} )
-                      </p>
-                    <hr />
-                    <p-button (click)="deleteTaskfun(item)" class="mx-5" label="Delete" severity="warn"></p-button>
-                </li>
-            </ul>
-            
-        </p-card>
-</div>
+      <app-task-form
+        [taskData]="selectTask"
+        [visibleEditTask]="visibleEditTask"
+        (visibilityChange)="onVisibilityChange($event)"
+        [deleteTask]="deleteTask"
+      ></app-task-form>
+  
+      <p-select
+        [options]="status"
+        [(ngModel)]="selectedStatus"
+        optionLabel="name"
+        placeholder="Select a Status"
+        class="w-full md:w-56 my-4"
+        (onChange)="selectedStatus ? filterTask(selectedStatus.code) : null"
+      ></p-select>
+  
+      <ul>
+        <li *ngFor="let item of filteredItems" class="d-flex">
+          <p-checkbox
+            (click)="toggleTaskStutus(item)"
+            [binary]="true"
+            [ngModel]="item.status === 'Completed'"
+            class="mx-2"
+          ></p-checkbox>
+  
+          <p
+            (click)="onEdit(item)"
+            class="selectEditTask"
+            [ngStyle]="{
+              'text-decoration-line': item.status === 'Completed'
+                ? 'line-through'
+                : 'none'
+            }"
+          >
+            {{ item.title }} - ( {{ item.status }} )
+          </p>
+          <p-button
+            (click)="deleteTaskfun(item)"
+            class="mx-5"
+            label="Delete"
+            severity="warn"
+          ></p-button>
+          <p-button
+            (click)="viewDetails(item)"
+            class="mx-5"
+            label="Details"
+            severity="info"
+          ></p-button>
+        </li>
+      </ul>
+  
+      <app-task-details
+        *ngIf="selectedTask"
+        [task]="selectedTask"
+        (closeDetailsEvent)="closeTaskDetails()"
+      ></app-task-details>
+    </p-card>
+  </div>
+  

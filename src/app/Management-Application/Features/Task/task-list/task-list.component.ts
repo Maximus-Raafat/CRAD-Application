@@ -11,6 +11,8 @@ interface Status {
   styleUrl: './task-list.component.css'
 })
 export class TaskListComponent implements OnInit{
+  selectedTask: any = null;
+
   listItems: listUserInterface[] = [];
   filteredItems: listUserInterface[] = [];
   status:Status[] | undefined;
@@ -63,5 +65,11 @@ export class TaskListComponent implements OnInit{
   }
   deleteTaskfun(item:any):void {
    this.deleteTask = item;
+  }
+  viewDetails(task: any): void {
+    this.selectedTask = task;
+  }
+  closeTaskDetails(): void {
+    this.selectedTask = null;
   }
 }
