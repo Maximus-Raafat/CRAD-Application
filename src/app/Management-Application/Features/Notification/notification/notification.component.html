@@ -1,1 +1,78 @@
-<p>notification works!</p>
+<div class="container">
+  <p-button class="" (click)="showDialog()"
+  (click)="SMSEmail = false"
+  >
+  SEND TO SMS 
+  </p-button>
+  <p-button class="" (click)="showDialog()"
+  (click)="SMSEmail = true"
+
+  >
+  SEND TO Email 
+    
+  </p-button>
+  <!-- <p-button
+   (click)="sendEmailSmSNotification()"
+   class="mx-5"
+   label="Send To Email"
+   severity="warn"
+   ></p-button> -->
+
+   <!-- <p-button
+   (click)="sendSmSNotification()"
+   class="mx-5"
+   label="Send To SMS"
+   severity="warn"
+   ></p-button> -->
+   
+<div class="notification-container">
+    <p *ngFor="let notification of notifications">
+      {{ notification }}
+    </p>
+  </div>
+
+</div>
+
+<p-dialog header="Add Profile" [modal]="true" [(visible)]="visibleTask" [style]="{ width: '35rem'}">
+  <form [formGroup]="formGroupSend" (ngSubmit)="onSubmit()">
+      <div>
+          <label for="SMS&Email"
+          >
+            <div *ngIf="SMSEmail"
+            >
+            Email sent to user
+          </div>
+          <div *ngIf="!SMSEmail"
+          >
+            SMS sent to
+          </div>
+          :</label>
+          <input id="sendTo" formControlName="sendTo">
+          <div *ngIf="formGroupSend.get('sendTo')?.invalid && formGroupSend.get('sendTo')?.touched">
+              Title is required.
+          </div>
+      </div>
+
+      <div>
+          <label for="message">message:</label>
+          <input id="message" formControlName="message">
+          <div *ngIf="formGroupSend.get('message')?.invalid && formGroupSend.get('message')?.touched">
+            Message is required.
+          </div>
+      </div>
+  </form>
+  <p-button
+  (click)="sendEmailSmSNotification()"
+  class="mx-5"
+  severity="warn"
+  >
+  <div *ngIf="SMSEmail"
+  >
+  Email sent to user
+</div>
+<div *ngIf="!SMSEmail"
+>
+  SMS sent to
+</div>
+</p-button>
+</p-dialog>

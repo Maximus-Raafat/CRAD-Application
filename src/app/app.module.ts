@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Checkbox } from 'primeng/checkbox';
 import { Dialog } from 'primeng/dialog';
 import { DatePicker } from 'primeng/datepicker';
+import { NotificationService } from './Management-Application/Core/Services/NotifactionService/Notifaction';
+import { NotificationComponent } from './Management-Application/Features/Notification/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { DatePicker } from 'primeng/datepicker';
     TaskDetailsComponent,
     TaskFormComponent,
     TaskListComponent,
-
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +45,7 @@ import { DatePicker } from 'primeng/datepicker';
     DatePicker,
   ],
   providers: [
+    NotificationService,
     providePrimeNG({ 
         theme: {
             preset: Aura
