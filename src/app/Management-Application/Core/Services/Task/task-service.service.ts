@@ -14,6 +14,7 @@ export class TaskServiceService extends AbstractTaskService{
   
   constructor(private http:HttpClient) {
     super();
+    this.fetchTasks();
   }
   override fetchTasks(): void {
     this.http.get(this.url).subscribe((tasks:any)=>{

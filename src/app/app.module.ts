@@ -20,14 +20,17 @@ import { Dialog } from 'primeng/dialog';
 import { DatePicker } from 'primeng/datepicker';
 import { NotificationService } from './Management-Application/Core/Services/NotifactionService/Notifaction';
 import { NotificationComponent } from './Management-Application/Features/Notification/notification/notification.component';
-
+import { ChartModule } from 'primeng/chart';
+import { ReportsComponent } from './Management-Application/Features/Notification/reports/reports.component';
 @NgModule({
   declarations: [
     AppComponent,
     TaskDetailsComponent,
     TaskFormComponent,
     TaskListComponent,
-    NotificationComponent
+    NotificationComponent,
+    ReportsComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { NotificationComponent } from './Management-Application/Features/Notific
     Checkbox,
     Dialog,
     DatePicker,
+    ChartModule,
   ],
   providers: [
     NotificationService,
